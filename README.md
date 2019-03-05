@@ -6,9 +6,9 @@ Whiteboard++ is a collaborative online whiteboard where you and your collaborato
 
 # Team Members
 
-Blake Geraci<\br>
-Daniil Maly<\br>
-John Pare <\br>
+Blake Geraci<br/>
+Daniil Maly<br/>
+John Pare <br/>
 Matthew Plumador
 
 # Application Initialization
