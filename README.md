@@ -1,14 +1,15 @@
-# Application Name
-
-Rename the above with the name of your application.
+# Whiteboard++
 
 # Overview
 
-Add an overview of your application here.
+Whiteboard++ is a collaborative online whiteboard where you and your collaborators can draw and create images to convey complex ideas or plan out projects and ideas. The application will be used by users similar to MS Paint and other raster graphics editors but also allow for real-time editing with other users akin to GoogleDocs. The primary users of the application are professional teams at companies or groups of students working on group projects. 
 
 # Team Members
 
-Add the team member names who are working on this application.
+Blake Geraci
+Daniil Maly
+John Pare 
+Matthew Plumador
 
 # Application Initialization
 
