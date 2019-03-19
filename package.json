@@ -1,12 +1,13 @@
 {
   "name": "ch01",
   "version": "1.0.0",
-  "description": "",
+  "description": "Whiteboard++ is a collaborative online whiteboard where you and your collaborators can draw and create images to convey complex ideas or plan out projects and ideas. The application will be used by users similar to MS Paint and other raster graphics editors but also allow for real-time editing with other users akin to GoogleDocs. The primary users of the application are professional teams at companies or groups of students working on group projects.",
   "main": "index.js",
   "scripts": {
     "compile": "babel src --presets react,es2015 --out-dir static",
     "watch": "babel src --presets react,es2015 --out-dir static --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +19,13 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^5.9.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zryx51/Class-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zryx51/Class-Project/issues"
+  },
+  "homepage": "https://github.com/Zryx51/Class-Project#readme"
 }
