@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>View 01</title>
+    <title>Login</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js">
     </script>
@@ -21,11 +21,26 @@
         }
     </style>
 </head>
-
+<h1 align="center">WhiteBoard++</h1>
 <body>
     <!-- this is where our component will appear -->
+
     <div id="contents"></div>
-    <script src="/App01.js"></script>
+    <div id="login" border="" ></div>
+    <form action="view02.html">
+        <div class="container" align="center">
+            <label id="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required></div>
+            <div class="container" align="center">
+            <label id="pass"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pass" required></div>
+                <div class="container" align="center">
+            <button type="submit">Login</button>
+        </div>
+        <div class="container" style="background-color:#f1f1f1"></div>
+    </form>
+
+    <script src="App01.js"></script>
 </body>
 
 </html>

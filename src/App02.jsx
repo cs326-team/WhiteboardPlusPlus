@@ -19,6 +19,11 @@ class MyComponent extends React.Component {
     );
   }
 }
+let test = function(){
+  console.log("test")
+  let canvas = document.getElementById("canvas")
+
+}
 
 // This renders the JSX component inside the content node:
 ReactDOM.render(<MyComponent />, contentNode);
