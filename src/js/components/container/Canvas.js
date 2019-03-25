@@ -30,9 +30,23 @@ export default class Canvas extends React.Component {
 
     componentDidUpdate() {
         this.ctx.fillStyle = this.props.color;
-        this.state.points.forEach(point => 
-            this.ctx.fillRect(point[0], point[1], 1, 1)
-        );
+        this.ctx.strokeStyle = this.props.color;
+        let prevPoint = this.state.points[0];
+        this.state.points.forEach(point => {
+            // this.ctx.fillRect(point[0], point[1], 1, 1)
+            this.ctx.beginPath();
+
+            // If the point is -1,-1 then the mouse was released and the line should have a break
+            if (prevPoint[0] === -1) {
+                // skip ahead to the next point without connecting the lines.
+                prevPoint = point;
+            } else {
+                this.ctx.moveTo(prevPoint[0], prevPoint[1]);
+                this.ctx.lineTo(point[0], point[1]);
+                this.ctx.stroke();
+            }
+            prevPoint = point;
+        });
     }
 
     getCoordsFromEvent (mouseEvent) {
@@ -54,7 +68,7 @@ export default class Canvas extends React.Component {
 
         this.setState({
             isMouseDown: !this.state.isMouseDown,
-            points: this.state.points
+            points: this.state.points.concat([-1, -1]) //-1 adds a marker to the array to seperate lines
         });
     }
 
