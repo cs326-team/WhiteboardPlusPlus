@@ -8,23 +8,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// const CanvasContainer = require('./CanvasContainer/index.js');
-// import React from 'react';
-
 // This is a place holder for the initial application state.
-// const state = [
-
-// ];
+var state = [];
 
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
-
-var CanvasContainer = function CanvasContainer() {
-  return React.createElement(
-    "h1",
-    null,
-    "hello world"
-  );
+var test = function test() {
+  console.log("test");
+  var canvas = document.getElementById("canvas");
 };
 
 var MyComponent = function (_React$Component) {
@@ -42,7 +33,11 @@ var MyComponent = function (_React$Component) {
       return React.createElement(
         "div",
         null,
-        React.createElement(CanvasContainer, null)
+        React.createElement(
+          "h1",
+          null,
+          "My View 02"
+        )
       );
     }
   }]);

@@ -3,29 +3,31 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>View 02</title>
+    <title>canvas</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"> </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js">
-    </script>
-    <style>
-        table.bordered-table th,
-        td {
-            border: 1px solid silver;
-            padding: 4px;
-        }
-
-        table.bordered-table {
-            border-collapse: collapse
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js"> </script>
+    <link href="css2.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <!-- this is where our component will appear -->
     <div id="contents"></div>
-    <script src="/App02.js"></script>
+    <div class="sidebar">
+        Buttons
+        <ul class="sidebuttons">
+
+            <li><button id="b1" type="button" class="sidebutton" onclick="test()">Erase</button></li>
+            <li><button type="button"class="sidebutton">Color</button></li>
+            <li><button type="button"class="sidebutton">3</button></li>
+            <li><button type="button"class="sidebutton">4</button></li>
+            <li><button type="button"class="sidebutton">5</button></li>
+            <li><button type="button"class="sidebutton">6</button></li>
+        </ul>
+    </div>
+    <canvas id="myCanvas" width="720" height=720 style="border:3px solid #000000;"></canvas>
+
+    <script src="App02.js"></script>
 </body>
 
 </html>

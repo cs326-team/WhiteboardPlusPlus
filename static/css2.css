@@ -1,0 +1,28 @@
+div.sidebar{
+    display: block;
+    border: 3px solid;
+    border-image-width: auto;
+    padding: 10px 5px;
+    width: fit-content;
+    overflow-x: hidden;
+    z-index: 1;
+    left: 0;
+    position: fixed;
+    margin-left: 15px;
+    background: lightblue;
+}
+ul.sidebuttons{
+    list-style-type: none;
+    padding: 5px;
+    width: 4%;
+}
+canvas {
+    margin-left: 115px ; /* Same as the width of the sidebar */
+    padding: 3px 10px;
+    border:3px solid;
+    width: 720px;
+    height: 720px;
+}
+button.sidebutton{
+    width:75px;
+}
