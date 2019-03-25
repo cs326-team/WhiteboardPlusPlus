@@ -10,7 +10,7 @@ export default class PureCanvas extends React.Component {
     render() {
         return (
           <Bordered
-            color="red"
+            color={this.props.color}
             width={this.props.width}
             height={this.props.height}
           >
@@ -23,6 +23,9 @@ export default class PureCanvas extends React.Component {
                   : null
               }
               onClick={this.props.onClick}
+              onMouseMove={this.props.onMouseMove}
+              onMouseDown={this.props.onMouseDown}
+              onMouseUp={this.props.onMouseUp}
             />
           </Bordered>
         );
