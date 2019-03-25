@@ -20,7 +20,7 @@ export default class Canvas extends React.Component {
 
     componentDidUpdate() {
 
-        this.ctx.fillStyle = 'blue';
+        this.ctx.fillStyle = 'red';
         this.state.points.forEach(point => this.ctx.fillRect(point[0], point[1], 1, 1));
     }
 
