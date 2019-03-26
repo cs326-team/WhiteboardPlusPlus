@@ -5,6 +5,8 @@ import PureCanvas from '../presentational/PureCanvas';
  * Still need to figure out issue where the mouse is down 
  * and the user leaves the canvas. The state variable 
  * gets left as true, even if the user their mouse up.
+ * Update: This also occurs if the user right clicks inside of the canvas and then left clicks. (Mouse down, right click, mouse down)
+ * Update2: This also occurs if the user holds mouse down outside of the canvas area and then releases the mouse inside of the canvas
  */
 
 export default class Canvas extends React.Component {

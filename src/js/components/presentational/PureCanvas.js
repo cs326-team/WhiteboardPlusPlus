@@ -1,5 +1,5 @@
 import React from 'react';
-import Bordered from './styled/Bordered'
+import Bordered from './styled/Bordered';
 
 
 export default class PureCanvas extends React.Component {
