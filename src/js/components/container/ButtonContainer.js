@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ButtonInput from "../presentational/ButtonInput";
+import ButtonStyle from "../presentational/ButtonStyle";
+
 
 class ButtonContainer extends Component {
   constructor() {
@@ -15,38 +17,32 @@ class ButtonContainer extends Component {
   render() {
     const { buttonPressed } = this.state;
     return ( 
-        //<div>
-        <button id = "ClearButton">
+        <div class = "btn-group">
             <ButtonInput
+            label="buttonPressed"
             text="Clear"
-            label="buttonPressed"
-            type="button"
+            type= {ButtonStyle}
             id="buttonPressed"
-            value={buttonPressed}
+            value="Clear"
             click={this.click}
             />
-        </button>   
-       /* <button id = "ColorsButton">
             <ButtonInput
-            text="Colors"
             label="buttonPressed"
-            type="button"
+            text="Color"
+            type={ButtonStyle}
             id="buttonPressed"
-            value={buttonPressed}
+            value="Color"
             click={this.click}
             />
-        </button>
-        <button id = "SizeButton">
             <ButtonInput
+            label="buttonPressed"
             text="Size"
-            label="buttonPressed"
-            type="button"
+            type={ButtonStyle}
             id="buttonPressed"
-            value={buttonPressed}
+            value="Size"
             click={this.click}
             />
-        </button>
-        </div> */
+        </div> 
     );
   }
 }
