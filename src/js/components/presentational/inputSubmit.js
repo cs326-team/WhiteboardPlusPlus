@@ -1,18 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-const InputSubmit = ({ label, text, type, id, value, onClick }) => (
+import Buttonify from "./styled/Buttonify";
+const InputSubmit = ({ label, text, type, id, value, onClick,title }) => (
   <div className="button">
-    <label htmlFor={label}>{text}</label>
-    <input
+    <Buttonify
+      width={"50px"}
+      height={"25px"}
       type={type}
-      className="btn btn-primary"
+      className="button-control"
       text = {text}
       id={id}
       value={value}
       onClick={onClick}
       onSubmit={onClick}
+      title={title}
       required
-    />
+      >
+    <label htmlFor={label}>{text}</label>
+    </Buttonify>
+    
   </div>
 );
 InputSubmit.propTypes = {
@@ -22,5 +28,6 @@ InputSubmit.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired
 };
 export default InputSubmit;
