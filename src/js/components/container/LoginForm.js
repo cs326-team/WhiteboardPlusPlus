@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Input from "../presentational/Input";
-import InputSubmit from "../presentational/inputSubmit";
+import InputSubmit from "../presentational/InputSubmit";
 import Buttonify from "../presentational/styled/Buttonify";
 
 class FormContainer extends Component {
@@ -12,10 +12,12 @@ class FormContainer extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange(event) {
     console.log(this.state) //This is to show that we are updating the state when we type in the username/pasword field for the Demonstration Video
     this.setState({ [event.target.id]: event.target.value });
   }
+  
   render() {
     const { username, password } = this.state;
     return (
@@ -37,17 +39,14 @@ class FormContainer extends Component {
             value={password}
             handleChange={this.handleChange}
           />
-        </form>
           <InputSubmit
-            text="Log-in"
             label="Log-In"
-            type= {Buttonify}
-            value = "Log-In"
-            title = "Testing"
-            onClick={(e) => {e.preventDefault(); console.log(this.state); }} //The handleChange is mapped to the onClick inside of InputSubmit
-            //The prevent default prevents the automatic Submit type button from refreshing the page.
+            type="submit"
+            id="submitButton"
+            onClick={(e) => {console.log(this.state); }} //The handleChange is mapped to the onClick inside of InputSubmit
 
           />
+        </form>
       </div>
     );
   }

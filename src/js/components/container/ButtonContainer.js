@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import ButtonInput from "../presentational/ButtonInput";
-import ButtonStyle from "../presentational/ButtonStyle";
-
+import Button from "../presentational/Button";
+import ButtonGroup from "../presentational/styled/ButtonGroup";
 
 class ButtonContainer extends Component {
   constructor() {
@@ -18,33 +17,34 @@ class ButtonContainer extends Component {
 
   render() {
     const { buttonPressed } = this.state;
-    return ( 
-        <div class = "btn-group">
-              <ButtonInput
-                label="buttonPressedClear"
-                text="Clear"
-                type= {ButtonStyle}
-                id="ClearButton"
-                value="Clear"
-                onClickHandler={this.onClickHandler}
-            />
-              <ButtonInput
-                label="buttonPressedColor"
-                text="Color"
-                type={ButtonStyle}
-                id="ColorButton"
-                value="Color"
-                onClickHandler={this.onClickHandler}
-            />
-              <ButtonInput
-                label="buttonPressedSize"
-                text="Size"
-                type={ButtonStyle}
-                id="SizeButton"
-                value="Size"
-                onClickHandler={this.onClickHandler}
-            />
-        </div> 
+    return (
+      <ButtonGroup>
+        <Button
+          classes="btn btn-danger"
+          text="Clear"
+          id="ClearButton"
+          onClickHandler={() => window.location.reload()}
+        />
+        <Button
+          classes="btn btn-warning"
+          text="Change Color"
+          id="ColorButton"
+          onClickHandler={this.onClickHandler}
+        />
+        <Button
+          classes="btn btn-success"
+          text="Resize"
+          id="SizeButton"
+          onClickHandler={this.onClickHandler}
+        />
+        <Button
+          classes="btn btn-primary"
+          text="Share"
+          id="LinkButton"
+          onClickHandler={this.onClickHandler}
+        />
+        
+      </ButtonGroup>
     );
   }
 }

@@ -1,20 +1,30 @@
 import React from 'react';
 import Canvas from './Canvas';
+import AppContainer from '../presentational/styled/AppContainer';
 import Header from '../presentational/styled/Header';
 import ButtonContainer from './ButtonContainer';
-import LoginForm from './LoginFormContainer';
+import CanvasContainer from '../presentational/styled/CanvasContainer';
+import LoginForm from './LoginForm';
+import LeftGutter from '../presentational/styled/LeftGutter';
+import RightGutter from '../presentational/styled/RightGutter';
 
 
 
 const color = "#ff826f";
 
 const App = () => (
-    <div>
-        <Header color={color}>Whiteboard++</Header>
-        <Canvas color={color}/>
+  <AppContainer className="container">
+    <Header color={color}>Whiteboard++</Header>
+    <CanvasContainer>
+      <LeftGutter>
         <ButtonContainer />
+      </LeftGutter>
+      <Canvas color={color} />
+      <RightGutter>
         <LoginForm />
-    </div>
+      </RightGutter>
+    </CanvasContainer>
+  </AppContainer>
 );
 
 export default App;

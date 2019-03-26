@@ -1,32 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Buttonify from "./styled/Buttonify";
-const InputSubmit = ({ label, text, type, id, value, onClick,title }) => (
-  <div className="button">
-    <Buttonify
-      width={"2rem"}
-      height={"2rem"}
-      type={type}
-      className="button-control"
-      text = {text}
-      id={id}
-      value={value}
-      onClick={onClick}
-      onSubmit={onClick}
-      title={title}
-      required
-      >
+import Input from "./Input";
+
+const InputSubmit = ({ label, text, id, onClick, type, value }) => (
+  <Input
+    type={type}
+    text={text}
+    id={id}
+    onClick={onClick}
+    onSubmit={onClick}
+    value={value}
+  >
     <label htmlFor={label}>{text}</label>
-    </Buttonify>
-    
-  </div>
+  </Input>
 );
+
 InputSubmit.propTypes = {
   label: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  type: PropTypes.string
 };
 export default InputSubmit;
