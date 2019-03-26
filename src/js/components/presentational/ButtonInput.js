@@ -1,25 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-const Input = ({ label, text, type, id, value, handleChange }) => (
-  <div className="form-group">
+const ButtonInput = ({ label, text, type, id, value, click }) => (
+  <div className="button-group">
     <label htmlFor={label}>{text}</label>
     <input
       type={type}
-      className="form-control"
+      className="button-control"
       id={id}
       value={value}
-      onChange={handleChange}
+      onClick={click}
       required
     />
   </div>
 );
-Input.propTypes = {
+ButtonInput.propTypes = {
   label: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  click: PropTypes.func.isRequired
 };
 
-export default Input;
+export default ButtonInput;
