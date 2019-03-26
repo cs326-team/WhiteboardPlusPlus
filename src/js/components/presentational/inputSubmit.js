@@ -17,7 +17,7 @@ const InputSubmit = ({ label, text, id, onClick, type, value }) => (
 
 InputSubmit.propTypes = {
   label: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   id: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   type: PropTypes.string
