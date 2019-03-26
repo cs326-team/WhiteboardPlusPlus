@@ -14,12 +14,12 @@ const Input = ({ label, text, type, id, value, handleChange }) => (
   </div>
 );
 Input.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  value: PropTypes.string,
+  handleChange: PropTypes.func
 };
 
 export default Input;
