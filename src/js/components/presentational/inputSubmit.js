@@ -10,6 +10,7 @@ const InputSubmit = ({ label, text, type, id, value, onClick }) => (
       id={id}
       value={value}
       onClick={onClick}
+      onSubmit={onClick}
       required
     />
   </div>
@@ -20,6 +21,6 @@ InputSubmit.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 export default InputSubmit;

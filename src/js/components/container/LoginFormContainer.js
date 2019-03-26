@@ -41,7 +41,9 @@ class FormContainer extends Component {
         <InputSubmit
           type= "Submit"
           value = "Log-In"
-          onClick={(e) => {console.log(this.state); }} //The handleChange is mapped to the onClick inside of InputSubmit
+          onClick={(e) => {e.preventDefault(); console.log(this.state); }} //The handleChange is mapped to the onClick inside of InputSubmit
+          //The prevent default prevents the automatic Submit type button from refreshing the page.
+
         />
 
       </form>
