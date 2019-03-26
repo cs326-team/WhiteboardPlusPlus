@@ -94,8 +94,8 @@ export default class Canvas extends React.Component {
                 onMouseDown={this.toggleIsMouseDown}
                 onMouseUp={this.toggleIsMouseDown}
                 contextRef={this.saveContext}
-                width={300}
-                height={300}
+                width={500}
+                height={500}
                 color={this.props.color}
             />
         );
