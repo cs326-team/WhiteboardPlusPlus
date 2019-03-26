@@ -13,12 +13,11 @@ class FormContainer extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
-    console.log(this.state)
+    console.log(this.state) //This is to show that we are updating the state when we type in the username/pasword field for the Demonstration Video
     this.setState({ [event.target.id]: event.target.value });
   }
   render() {
-    const { username } = this.state;
-    const { password } = this.state;
+    const { username, password } = this.state;
     return (
       <div id="Login">
         <form id="Login-Form">
