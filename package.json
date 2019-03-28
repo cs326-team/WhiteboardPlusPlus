@@ -1,5 +1,5 @@
 {
-  "name": "ch01",
+  "name": "whiteboard-plus-plus",
   "version": "1.0.0",
   "description": "Whiteboard++ is a collaborative online whiteboard where you and your collaborators can draw and create images to convey complex ideas or plan out projects and ideas. The application will be used by users similar to MS Paint and other raster graphics editors but also allow for real-time editing with other users akin to GoogleDocs. The primary users of the application are professional teams at companies or groups of students working on group projects.",
   "main": "index.js",
