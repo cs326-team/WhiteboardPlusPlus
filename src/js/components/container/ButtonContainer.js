@@ -1,22 +1,48 @@
 import React, { Component } from "react";
 import Button from "../presentational/Button";
 import ButtonGroup from "../presentational/styled/ButtonGroup";
+import { CompactPicker } from 'react-color'
+
+//Must run: npm install react-color --save
 
 class ButtonContainer extends Component {
   constructor() {
     super();
     this.state = {
-      buttonPressed: 0
+      buttonPressed: 0,
+      displayColorPicker: false
     };
     this.onClickHandler = this.onClickHandler.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   onClickHandler(event){
-      this.setState({ [event.target.id]: event.target.value });
+      this.setState({ buttonPressed: 1 });
   }
+
+  handleClick(event){
+    this.setState({ displayColorPicker: !this.state.displayColorPicker })
+  };
+
+  handleClose(event){
+    this.setState({ displayColorPicker: false })
+  };
 
   render() {
     const { buttonPressed } = this.state;
+    const{ displayColorPicker } = this.state
+    const popover = {
+      position: 'absolute',
+      zIndex: '2',
+    }
+    const cover = {
+      position: 'fixed',
+      top: '0px',
+      right: '0px',
+      bottom: '0px',
+      left: '0px',
+    }
     return (
       <ButtonGroup>
         <Button
@@ -29,8 +55,12 @@ class ButtonContainer extends Component {
           classes="btn btn-warning"
           text="Change Color"
           id="ColorButton"
-          onClickHandler={this.onClickHandler}
+          onClickHandler={this.handleClick}
         />
+        { this.state.displayColorPicker ? <div style={ popover }>
+          <div style={ cover } onClick={ this.handleClose }/>
+          <CompactPicker />
+        </div> : null }
         <Button
           classes="btn btn-success"
           text="Resize"
