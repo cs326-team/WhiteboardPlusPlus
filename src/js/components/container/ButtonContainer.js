@@ -10,7 +10,8 @@ class ButtonContainer extends Component {
     super();
     this.state = {
       buttonPressed: 0,
-      displayColorPicker: false
+      displayColorPicker: false,
+      color: '#4D4D4D'
     };
     this.onClickHandler = this.onClickHandler.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -23,6 +24,10 @@ class ButtonContainer extends Component {
 
   handleClick(event){
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
+  };
+
+  handleChangeComplete(color){
+    console.log(color.hex)
   };
 
   handleClose(event){
@@ -57,9 +62,12 @@ class ButtonContainer extends Component {
           id="ColorButton"
           onClickHandler={this.handleClick}
         />
-        { this.state.displayColorPicker ? <div style={ popover }>
-          <div style={ cover } onClick={ this.handleClose }/>
-          <CompactPicker />
+        { this.state.displayColorPicker ? <div style={ popover } >
+          <div style={ cover } onClick={ this.handleClose }/> 
+          <CompactPicker
+          color = { this.state.color }
+          onChangeComplete={ this.handleChangeComplete }
+            />
         </div> : null }
         <Button
           classes="btn btn-success"
