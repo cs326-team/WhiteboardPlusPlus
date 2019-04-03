@@ -5,7 +5,7 @@ import { CompactPicker } from 'react-color'
 
 //Must run: npm install react-color --save
 
-class ButtonContainer extends Component {
+class ButtonPanel extends Component {
   constructor() {
     super();
     this.state = {
@@ -62,12 +62,12 @@ class ButtonContainer extends Component {
           id="ColorButton"
           onClickHandler={this.handleClick}
         />
-        { this.state.displayColorPicker ? <div style={ popover } >
+          { this.state.displayColorPicker ? <div style={ popover } >
           <div style={ cover } onClick={ this.handleClose }/> 
-          <CompactPicker
+        <CompactPicker
           color = { this.state.color }
           onChangeComplete={ this.handleChangeComplete }
-            />
+        />
         </div> : null }
         <Button
           classes="btn btn-success"
@@ -86,4 +86,4 @@ class ButtonContainer extends Component {
     );
   }
 }
-export default ButtonContainer;
+export default ButtonPanel;
