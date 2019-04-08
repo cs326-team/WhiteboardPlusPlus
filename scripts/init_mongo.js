@@ -10,7 +10,7 @@ MongoClient.connect('mongodb://localhost/playground',function(err,db) {
 */
 
 MongoClient.connect('mongodb://localhost', (err,client) => {
-    const db = client.db('WhiteboardDB');
+    const db = client.db('WhiteboardDBTest');
     db.collection('login').find().toArray(function(err,docs) {
         console.log("result of find:",docs);
         client.close();

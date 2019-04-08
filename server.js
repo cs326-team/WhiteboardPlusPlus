@@ -32,6 +32,12 @@ function validateLogin (login)
     return null;
 }
 
-app.listen(3000, function () {
+let db;
+MongoClient.connect('mongodb://localhost', { useNewUrlParser: true }).then(connection => {
+  db = connection.db('WhiteboardDB');
+  app.listen(3000, () => {
     console.log('App started on port 3000');
+  });
+}).catch(error => {
+  console.log('ERROR:', error);
 });
