@@ -18,10 +18,13 @@ export default class Canvas extends React.Component {
         this.onMouseDownHandler = this.onMouseDownHandler.bind(this);
         this.getCoordsFromEvent = this.getCoordsFromEvent.bind(this);
         this.onMouseUpHandler = this.onMouseUpHandler.bind(this);
+        this.getColor = this.getColor.bind(this);
+        this.setColor = this.setColor.bind(this);
 
         this.state = {
             points: [],
-            isMouseDown: false
+            isMouseDown: false,
+            color: "#000000"
         }
     }
 
@@ -40,9 +43,12 @@ export default class Canvas extends React.Component {
             this.ctx.beginPath();
 
             // If the point is -1,-1 then the mouse was released and the line should have a break
-            if (prevPoint[0] === -1) {
+            if (prevPoint[0] < 0 || point[0] < 0) {
                 // skip ahead to the next point without connecting the lines.
-                prevPoint = point;
+                console.log(prevPoint);
+                this.ctx.fillStyle = prevPoint[1];
+                this.ctx.strokeStyle = prevPoint[1];
+
             } else {
                 this.ctx.moveTo(prevPoint[0], prevPoint[1]);
                 this.ctx.lineTo(point[0], point[1]);
@@ -74,15 +80,15 @@ export default class Canvas extends React.Component {
 
         this.setState({
             isMouseDown: true,
-            points: this.state.points.concat([-1, -1]) //-1 adds a marker to the array to seperate lines
+            points: this.state.points.concat([[-1, this.state.color]]) //-1 adds a marker to the array to seperate lines
         });
     }
     onMouseUpHandler(e) {
         this.drawPoint(e);
-
+        console.log(this.state.color);
         this.setState({
             isMouseDown: false,
-            points: this.state.points.concat([-1, -1]) //-1 adds a marker to the array to seperate lines
+            points: this.state.points.concat([[-1, this.state.color]]) //-1 adds a marker to the array to seperate lines
         });
     }
     // adds point to canvas  
@@ -95,6 +101,12 @@ export default class Canvas extends React.Component {
         if(this.state.isMouseDown) {
             this.drawPoint(e);
         }
+    }
+    setColor(color){
+        this.state.color = color;
+    }
+    getColor(){
+        return this.state.color;
     }
 
     render() {
