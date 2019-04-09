@@ -82,7 +82,6 @@ export default class Canvas extends React.Component {
     onMouseDownHandler(e) {
 
         this.drawPoint(e);
-
         this.setState({
             isMouseDown: true,
             points: this.state.points.concat([[-1, this.state.color]]) //-1 adds a marker to the array to seperate lines
