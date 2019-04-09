@@ -13,6 +13,7 @@ class ButtonContainer extends Component {
 
   onClickHandler(event){
       this.setState({ [event.target.id]: event.target.value });
+
   }
 
   render() {

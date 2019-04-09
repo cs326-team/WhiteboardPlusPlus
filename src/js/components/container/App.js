@@ -20,6 +20,7 @@ const App = () => (
         <ButtonContainer />
       </LeftGutter>
       <Canvas color={color} />
+
       <RightGutter>
         <LoginForm />
       </RightGutter>
