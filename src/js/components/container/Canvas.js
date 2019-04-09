@@ -15,8 +15,9 @@ export default class Canvas extends React.Component {
         this.saveContext = this.saveContext.bind(this);
         this.drawPoint = this.drawPoint.bind(this);
         this.drawLine = this.drawLine.bind(this);
-        this.toggleIsMouseDown = this.toggleIsMouseDown.bind(this);
+        this.onMouseDownHandler = this.onMouseDownHandler.bind(this);
         this.getCoordsFromEvent = this.getCoordsFromEvent.bind(this);
+        this.onMouseUpHandler = this.onMouseUpHandler.bind(this);
 
         this.state = {
             points: [],
@@ -61,18 +62,28 @@ export default class Canvas extends React.Component {
           Math.round(clientX - xOffset + 1),
           Math.round(clientY - yOffset + 1)
         ];
-
+        if (coords[0] < 10 || coords[0] > 490 || coords[1] < 10 || coords[1] > 490){
+            this.state.isMouseDown = false;
+        }
         return coords;
     };    
 
-    toggleIsMouseDown(e) {
+    onMouseDownHandler(e) {
+
         this.drawPoint(e);
         this.setState({
-            isMouseDown: !this.state.isMouseDown,
+            isMouseDown: true,
             points: this.state.points.concat([-1, -1]) //-1 adds a marker to the array to seperate lines
         });
     }
+    onMouseUpHandler(e) {
+        this.drawPoint(e);
 
+        this.setState({
+            isMouseDown: false,
+            points: this.state.points.concat([-1, -1]) //-1 adds a marker to the array to seperate lines
+        });
+    }
     // adds point to canvas  
     drawPoint(e) {
         const coords = this.getCoordsFromEvent(e);
@@ -90,8 +101,8 @@ export default class Canvas extends React.Component {
             <PureCanvas
                 onClick={this.drawPoint}
                 onMouseMove={this.drawLine}
-                onMouseDown={this.toggleIsMouseDown}
-                onMouseUp={this.toggleIsMouseDown}
+                onMouseDown={this.onMouseDownHandler}
+                onMouseUp={this.onMouseUpHandler}
                 contextRef={this.saveContext}
                 width={500}
                 height={500}
