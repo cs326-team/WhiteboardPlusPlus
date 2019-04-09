@@ -1,5 +1,3 @@
-import userRouter from './Routes/User-Router';
-import wbRouter from './Routes/Whiteboard-Router';
 import mongoose from 'mongoose';
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,12 +6,11 @@ const db = mongoose.connect('mongodb://localhost:27017/WhiteboardDB', {useNewUrl
 
 
 const app = express();
-console.log("Okay we are in server.js");
 
 app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/', wbRouter);
+//app.use('/', wbRouter);
 
 
 // const LoginSchemaTypes = {
