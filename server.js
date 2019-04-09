@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 // const MongoClient = require('mongodb').MongoClient;
@@ -6,11 +6,38 @@ const db = mongoose.connect('mongodb://localhost:27017/WhiteboardDB', {useNewUrl
 
 
 const app = express();
+wbRouter = express.Router()
+
+const Schema = mongoose.Schema;
+
+const WhiteboardSchema = new Schema(
+    {
+        _id: String,
+        URI: String
+    }
+);
+
+WhiteboardTest = mongoose.model('whiteboards',WhiteboardSchema)
+
+
+wbRouter.route('/list').get((req,res) =>{
+  WhiteboardTest.find({}, (err,whiteboards) => {
+    res.json(whiteboards);
+  })
+})
+
+wbRouter.route('/:id').get((req,res) => {
+  WhiteboardTest.findById(req.params.id, (err, whiteboard) => {
+      res.json(whiteboard);
+  });
+});
+
+
 
 app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//app.use('/', wbRouter);
+app.use('/api/whiteboard/', wbRouter);
 
 
 // const LoginSchemaTypes = {
