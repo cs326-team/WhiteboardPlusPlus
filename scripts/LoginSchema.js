@@ -1,6 +1,7 @@
-const MongoClient = require('mongodb').MongoClient;
+import mongoose from 'mongoose';
 
-const Schema = MongoClient.Schema;
+
+const Schema = mongoose.Schema;
 
 const LoginSchema = new Schema(
     {
@@ -8,3 +9,5 @@ const LoginSchema = new Schema(
         password: String
     }
 );
+
+export default mongoose.model('login',LoginSchema)
