@@ -1,9 +1,14 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
+const user = require('./routes/login.route');
+// initialize our express app
 const app = express();
 
-app.use(express.static('static'));
+app.use('/users', user);
 
-app.listen(3000, function () {
-    console.log('App started on port 3000');
+let port = 8080;
+
+app.listen(port, () => {
+    console.log('Server is up and running on port numner ' + port);
 });

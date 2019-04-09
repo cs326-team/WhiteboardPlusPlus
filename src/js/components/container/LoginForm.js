@@ -44,7 +44,6 @@ class FormContainer extends Component {
             type="submit"
             id="submitButton"
             onClick={(e) => {console.log(this.state); }} //The handleChange is mapped to the onClick inside of InputSubmit
-
           />
         </form>
       </div>
