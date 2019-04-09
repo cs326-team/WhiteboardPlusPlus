@@ -18,6 +18,7 @@ userRouter.route('/:name').get((req,res) => {
 userRouter.route('/Create').post((req,res) => {
     const userName = req.body.name;
     User.find({name:userName}, (err,users) => {
+        console.log(user);
         if(err)
         {
             res.status(500).json({message:`Internal Server error: ${err}`})
