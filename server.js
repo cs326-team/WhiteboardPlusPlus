@@ -1,20 +1,23 @@
-const mongoose = require('mongoose');
+
 const express = require('express');
-const bodyParser = require('body-parser');
-// const MongoClient = require('mongodb').MongoClient;
-const db = mongoose.connect('mongodb://localhost:27017/WhiteboardDB', {useNewUrlParser: true});
-
-
 const app = express();
-wbRouter = express.Router()
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+// const MongoClient = require('mongodb').MongoClient;
 
+
+
+wbRouter = express.Router();
+app.use(bodyParser.json());
+
+const db = mongoose.connect('mongodb://localhost:27017/WhiteboardDB', {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 
 const WhiteboardSchema = new Schema(
     {
         _id: String,
         URI: String
-    }
+    }, {versionKey:false}
 );
 
 WhiteboardTest = mongoose.model('whiteboards',WhiteboardSchema)
@@ -23,8 +26,18 @@ WhiteboardTest = mongoose.model('whiteboards',WhiteboardSchema)
 wbRouter.route('/list').get((req,res) =>{
   WhiteboardTest.find({}, (err,whiteboards) => {
     res.json(whiteboards);
+    console.log("Test");
   })
-})
+});
+
+wbRouter.route('/list').post((req, res) => {
+
+    let test2 = mongoose.model('whiteboards',WhiteboardSchema);
+    let test = new test2(req.body);
+    console.log(test);
+    test.save();
+    res.status(201).send(test);
+});
 
 wbRouter.route('/:id').get((req,res) => {
   WhiteboardTest.findById(req.params.id, (err, whiteboard) => {
