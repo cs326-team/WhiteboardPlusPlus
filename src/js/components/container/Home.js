@@ -17,12 +17,12 @@ const API_POST_URL = () => `http://localhost:3000/api/whiteboard/add`;
 
 const Home = ({match}) => {
   const [color, setColor] = useState(colorInit);
-  // const [initialized, setInitialized] = useState(false);
   const [imageData, setImageData] = useState("");
 
   const postImageData = imgData => {
     axios.post(API_POST_URL(), { URI: imgData})
       .then(response => {
+        // where we'll need to add routing logic or ui logic to display whiteboard id 
         console.log(response);
       })
       .catch(error => {
@@ -30,7 +30,6 @@ const Home = ({match}) => {
       });
   }
 
-  // console.log(imageData);
   return (
     <AppContainer 
       className="container"
