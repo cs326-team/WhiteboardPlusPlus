@@ -15,25 +15,21 @@ const Schema = mongoose.Schema;
 
 const WhiteboardSchema = new Schema(
     {
-        _id: String,
         URI: String
     }, {versionKey:false}
 );
 
 WhiteboardTest = mongoose.model('whiteboards',WhiteboardSchema)
 
-
+//curl -X GET https://localhost:3000/api/whiteboard/list
 wbRouter.route('/list').get((req,res) =>{
   WhiteboardTest.find({}, (err,whiteboards) => {
     res.json(whiteboards);
     console.log("Test");
   })
 });
-//curl --header "Content-Type: application/json" \
-//   --request POST \
-//   --data '{"_id":"xyz","URI":"xyz"}' \
-//   http://localhost:3000/api/whiteboard/list
-wbRouter.route('/list').post((req, res) => {
+// curl --header "Content-Type: application/json"  --request POST  --data '{"_id":"xyz","URI":"xyz"}'  http://localhost:3000/api/whiteboard/list
+wbRouter.route('/add').post((req, res) => {
     let test2 = mongoose.model('whiteboards',WhiteboardSchema);
     let test = new test2(req.body);
     console.log(test);
