@@ -2,7 +2,7 @@ import React from 'react';
 import Canvas from './Canvas';
 import AppContainer from '../presentational/styled/AppContainer';
 import Header from '../presentational/styled/Header';
-import ButtonContainer from './ButtonContainer';
+import ButtonPanel from './ButtonPanel';
 import CanvasContainer from '../presentational/styled/CanvasContainer';
 import LoginForm from './LoginForm';
 import LeftGutter from '../presentational/styled/LeftGutter';
@@ -18,9 +18,10 @@ const App = () => (
     <Header color={color}>Whiteboard++</Header>
     <CanvasContainer>
       <LeftGutter>
-        <ButtonContainer />
+        <ButtonPanel />
       </LeftGutter>
       <Canvas color={color} />
+
       <RightGutter>
         <LoginForm />
       </RightGutter>
