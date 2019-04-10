@@ -1,13 +1,10 @@
 import React from 'react';
 import PureCanvas from '../presentational/PureCanvas';
+import Bordered from '../presentational/styled/Bordered';
+import axios from 'axios';
+import _ from 'lodash';
 
-/**
- * Still need to figure out issue where the mouse is down 
- * and the user leaves the canvas. The state variable 
- * gets left as true, even if the user their mouse up.
- * Update: This also occurs if the user right clicks inside of the canvas and then left clicks. (Mouse down, right click, mouse down)
- * Update2: This also occurs if the user holds mouse down outside of the canvas area and then releases the mouse inside of the canvas
- */
+const API_GET_URL = id => `http://localhost:3000/api/whiteboard/${id}`;
 
 export default class Canvas extends React.Component {
     constructor(props) {
@@ -18,14 +15,31 @@ export default class Canvas extends React.Component {
         this.onMouseDownHandler = this.onMouseDownHandler.bind(this);
         this.getCoordsFromEvent = this.getCoordsFromEvent.bind(this);
         this.onMouseUpHandler = this.onMouseUpHandler.bind(this);
-        this.getColor = this.getColor.bind(this);
-        this.setColor = this.setColor.bind(this);
-        this.getDataUrl = this.getDataUrl(this);
+        this.getDataUrl = this.getDataUrl.bind(this);
+        this.debouncedSetImageData = _.debounce(this.props.imageDataHandler, 500);
 
         this.state = {
             points: [],
             isMouseDown: false,
-            color: "#000000"
+            color: this.props.color,
+            didPaintImage: false,
+            canvasId: this.props.canvasId
+        }
+    }
+    
+    componentDidMount() {
+        if (this.state.canvasId) {
+            axios.get(API_GET_URL(this.state.canvasId))
+                .then(response => {
+                    const image = new Image();
+                    image.src = response.data.URI;
+                    image.onload = () => {
+                        this.ctx.drawImage(image, 0, 0);
+                    };
+                })
+                .catch(error => {
+                    console.log(error)
+                });
         }
     }
 
@@ -33,9 +47,9 @@ export default class Canvas extends React.Component {
         this.ctx = ctx;
         this.width = this.ctx.canvas.width;
         this.height = this.ctx.canvas.height;
-
     }
-    getDataUrl(){
+
+    getDataUrl() {
         return this.ctx.canvas.toDataURL("image/png");
     }
 
@@ -50,7 +64,6 @@ export default class Canvas extends React.Component {
             // If the point is -1,-1 then the mouse was released and the line should have a break
             if (prevPoint[0] < 0 || point[0] < 0) {
                 // skip ahead to the next point without connecting the lines.
-
                 this.ctx.fillStyle = prevPoint[1];
                 this.ctx.strokeStyle = prevPoint[1];
 
@@ -61,6 +74,8 @@ export default class Canvas extends React.Component {
             }
             prevPoint = point;
         });
+
+        this.debouncedSetImageData(this.getDataUrl()); 
     }
 
     getCoordsFromEvent (mouseEvent) {
@@ -80,20 +95,20 @@ export default class Canvas extends React.Component {
     };    
 
     onMouseDownHandler(e) {
-
         this.drawPoint(e);
         this.setState({
             isMouseDown: true,
-            points: this.state.points.concat([[-1, this.state.color]]) //-1 adds a marker to the array to seperate lines
+            points: this.state.points.concat([[-1, this.props.color]]) //-1 adds a marker to the array to seperate lines
         });
     }
     onMouseUpHandler(e) {
         this.drawPoint(e);
         this.setState({
             isMouseDown: false,
-            points: this.state.points.concat([[-1, this.state.color]]) //-1 adds a marker to the array to seperate lines
+            points: this.state.points.concat([[-1, this.props.color]]) //-1 adds a marker to the array to seperate lines
         });
     }
+
     // adds point to canvas  
     drawPoint(e) {
         const coords = this.getCoordsFromEvent(e);
@@ -105,25 +120,24 @@ export default class Canvas extends React.Component {
             this.drawPoint(e);
         }
     }
-    setColor(color){
-        this.state.color = color;
-    }
-    getColor(){
-        return this.state.color;
-    }
 
     render() {
         return (
+          <Bordered
+            color={this.props.color}
+            width={500}
+            height={500}
+          >
             <PureCanvas
-                onClick={this.drawPoint}
-                onMouseMove={this.drawLine}
-                onMouseDown={this.onMouseDownHandler}
-                onMouseUp={this.onMouseUpHandler}
-                contextRef={this.saveContext}
-                width={500}
-                height={500}
-                color={this.props.color}
+              onClick={this.drawPoint}
+              onMouseMove={this.drawLine}
+              onMouseDown={this.onMouseDownHandler}
+              onMouseUp={this.onMouseUpHandler}
+              contextRef={this.saveContext}
+              width={500}
+              height={500}
             />
+          </Bordered>
         );
     }
 }

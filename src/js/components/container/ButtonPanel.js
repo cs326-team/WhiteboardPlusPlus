@@ -10,8 +10,8 @@ class ButtonPanel extends Component {
     super();
     this.state = {
       buttonPressed: 0,
-      displayColorPicker: false,
-      color: '#4D4D4D'
+      displayColorPicker: false
+      // color: '#4D4D4D'
     };
     this.onClickHandler = this.onClickHandler.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -26,9 +26,9 @@ class ButtonPanel extends Component {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
   };
 
-  handleChangeComplete(color){
-    console.log(color.hex)
-  };
+  // handleChangeComplete(color){
+  //   this.setState({color, ...this.state});
+  // };
 
   handleClose(event){
     this.setState({ displayColorPicker: false })
@@ -65,8 +65,8 @@ class ButtonPanel extends Component {
           { this.state.displayColorPicker ? <div style={ popover } >
           <div style={ cover } onClick={ this.handleClose }/> 
         <CompactPicker
-          color = { this.state.color }
-          onChangeComplete={ this.handleChangeComplete }
+          color = { this.props.color }
+          onChangeComplete={ this.props.setColorHandler }
         />
         </div> : null }
         <Button
@@ -77,9 +77,9 @@ class ButtonPanel extends Component {
         />
         <Button
           classes="btn btn-primary"
-          text="Share"
+          text="Save"
           id="LinkButton"
-          onClickHandler={this.onClickHandler}
+          onClickHandler={this.props.onSaveHandler }
         />
         
       </ButtonGroup>
