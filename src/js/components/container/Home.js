@@ -13,7 +13,7 @@ import RightGutter from '../presentational/styled/RightGutter';
 
 
 const colorInit = "#ff826f";
-const API_POST_URL = () => `http://localhost:3000/api/whiteboard/addWB`;
+const API_POST_URL = () => `http://localhost:3000/api/whiteboard/add`;
 
 const Home = ({match}) => {
   const [color, setColor] = useState(colorInit);
@@ -30,7 +30,7 @@ const Home = ({match}) => {
       });
   }
 
-  console.log(imageData);
+  // console.log(imageData);
   return (
     <AppContainer 
       className="container"

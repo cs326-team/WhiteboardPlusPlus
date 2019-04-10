@@ -3,11 +3,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 
 
 
 wbRouter = express.Router();
+app.use(cors());
 app.use(bodyParser.json());
 
 const db = mongoose.connect('mongodb://localhost:27017/WhiteboardDB', {useNewUrlParser: true});
@@ -28,7 +29,8 @@ wbRouter.route('/list').get((req,res) =>{
     console.log("Test");
   })
 });
-// curl --header "Content-Type: application/json"  --request POST  --data '{"_id":"xyz","URI":"xyz"}'  http://localhost:3000/api/whiteboard/list
+
+// curl --header "Content-Type: application/json"  --request POST  --data '{"_id":"xyz","URI":"xyz"}'  http://localhost:3000/api/whiteboard/add
 wbRouter.route('/add').post((req, res) => {
     let test2 = mongoose.model('whiteboards',WhiteboardSchema);
     let test = new test2(req.body);

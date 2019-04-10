@@ -18,7 +18,7 @@ export default class Canvas extends React.Component {
         this.getCoordsFromEvent = this.getCoordsFromEvent.bind(this);
         this.onMouseUpHandler = this.onMouseUpHandler.bind(this);
         this.getDataUrl = this.getDataUrl.bind(this);
-        this.debouncedSetImageData = _.debounce(this.props.imageDataHandler, 1000);
+        this.debouncedSetImageData = _.debounce(this.props.imageDataHandler, 500);
 
         this.state = {
             points: [],
@@ -33,12 +33,11 @@ export default class Canvas extends React.Component {
         if (this.state.canvasId) {
             axios.get(API_GET_URL(this.state.canvasId))
                 .then(response => {
-                    console.log(response);
-                    // const image = new Image();
-                    // image.src = response.imageData;
-                    // image.onload = () => {
-                    //     this.ctx.drawImage(image, 0, 0);
-                    // };
+                    const image = new Image();
+                    image.src = response.data.URI;
+                    image.onload = () => {
+                        this.ctx.drawImage(image, 0, 0);
+                    };
                 })
                 .catch(error => {
                     console.log(error)
