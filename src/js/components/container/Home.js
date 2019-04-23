@@ -6,7 +6,6 @@ import AppContainer from '../presentational/styled/AppContainer';
 import Header from '../presentational/styled/Header';
 import ButtonPanel from './ButtonPanel';
 import CanvasContainer from '../presentational/styled/CanvasContainer';
-import LoginForm from './LoginForm';
 import LeftGutter from '../presentational/styled/LeftGutter';
 import RightGutter from '../presentational/styled/RightGutter';
 
@@ -17,12 +16,12 @@ const API_POST_URL = () => `http://localhost:3000/api/whiteboard/add`;
 
 const Home = ({match}) => {
   const [color, setColor] = useState(colorInit);
+  // const [initialized, setInitialized] = useState(false);
   const [imageData, setImageData] = useState("");
 
   const postImageData = imgData => {
     axios.post(API_POST_URL(), { URI: imgData})
       .then(response => {
-        // where we'll need to add routing logic or ui logic to display whiteboard id 
         console.log(response);
       })
       .catch(error => {
@@ -30,6 +29,7 @@ const Home = ({match}) => {
       });
   }
 
+  // console.log(imageData);
   return (
     <AppContainer 
       className="container"
@@ -44,9 +44,6 @@ const Home = ({match}) => {
           />
         </LeftGutter>
         <Canvas color={color} canvasId={match.params.id} imageDataHandler={imgData => setImageData(imgData)} />
-        <RightGutter>
-          <LoginForm />
-        </RightGutter>
       </CanvasContainer>
     </AppContainer>
   );
