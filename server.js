@@ -48,8 +48,8 @@ wbRouter.route('/:id').get((req,res) => {
 
 
 app.use(express.static('static'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit:'15mb'}));
+app.use(bodyParser.urlencoded({limit:'15mb', extended: true }));
 app.use('/api/whiteboard/', wbRouter);
 
 
