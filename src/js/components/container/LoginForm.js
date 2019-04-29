@@ -14,7 +14,7 @@ class FormContainer extends Component {
   }
 
   handleChange(event) {
-    console.log(this.state) //This is to show that we are updating the state when we type in the username/pasword field for the Demonstration Video
+    // console.log(this.state) //This is to show that we are updating the state when we type in the username/pasword field for the Demonstration Video
     this.setState({ [event.target.id]: event.target.value });
   }
   
