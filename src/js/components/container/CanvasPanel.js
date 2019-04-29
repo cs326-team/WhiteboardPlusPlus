@@ -29,10 +29,6 @@ class CanvasPanel extends Component {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
   };
 
-  // handleChangeComplete(color){
-  //   this.setState({color, ...this.state});
-  // };
-
   handleClose(event){
     this.setState({ displayColorPicker: false })
   };
@@ -42,8 +38,6 @@ class CanvasPanel extends Component {
   copyToClipboard(e) {
     this.textArea.select();
     document.execCommand('copy');
-    // This is just personal preference.
-    // I prefer to not show the the whole text area selected.
     e.target.focus();
   }
 

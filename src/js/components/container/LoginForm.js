@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Input from "../presentational/Input";
 import InputSubmit from "../presentational/InputSubmit";
-import Buttonify from "../presentational/styled/Buttonify";
 
 class FormContainer extends Component {
   constructor() {
@@ -14,7 +13,6 @@ class FormContainer extends Component {
   }
 
   handleChange(event) {
-    // console.log(this.state) //This is to show that we are updating the state when we type in the username/pasword field for the Demonstration Video
     this.setState({ [event.target.id]: event.target.value });
   }
   
@@ -34,7 +32,7 @@ class FormContainer extends Component {
           <Input
             text="Password:"
             label="Password"
-            type="password" //The password type makes it so that the password is not displayed to everyone.
+            type="password" 
             id="password"
             value={password}
             handleChange={this.handleChange}
