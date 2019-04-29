@@ -1,11 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import Home from './Home';
-
-
-
-const colorInit = "#ff826f";
 
 const App = () => (
   <Router>

@@ -25,7 +25,6 @@ const Home = ({match}) => {
   const postImageData = imgData => {
     axios.post(API_POST_URL(), { URI: imgData})
       .then(response => {
-        // where we'll need to add routing logic or ui logic to display whiteboard id 
         const whiteboardId = response.data['_id'];
         const whiteboardUrl = createWhiteboardUrl(location.origin, whiteboardId);
         
@@ -36,10 +35,13 @@ const Home = ({match}) => {
       });
   }
 
+  // make sure we don't have a url and we're trying to access a whiteboard
+  // before generating a link
   if (!linkUrl && match.path === "/whiteboard/:id") {
     const { id } = match.params;
     setLinkUrl(createWhiteboardUrl(location.origin, id));
   }
+
   return (
     <AppContainer 
       className="container"
@@ -54,7 +56,11 @@ const Home = ({match}) => {
             linkUrl={linkUrl}
           />
         </LeftGutter>
-        <Canvas color={color} canvasId={match.params.id} imageDataHandler={imgData => setImageData(imgData)} />
+        <Canvas 
+          color={color} 
+          canvasId={match.params.id} 
+          imageDataHandler={imgData => setImageData(imgData)} 
+        />
         <RightGutter>
           <LoginForm />
         </RightGutter>
