@@ -1,3 +1,6 @@
+# Warning
+This project is depreciated and has potential security vulnerabilities. Updates would be required to re-launch this application in a production environment.
+
 # Whiteboard++
 
 # Overview
